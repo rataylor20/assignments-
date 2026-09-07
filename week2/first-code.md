@@ -1,4 +1,4 @@
-# CISC 191 - Week 2 
+# CISC 171 - Week 2 
 ## My first code
 
 This assignment covers Python print statements, string forming, and output buffering
