@@ -6,7 +6,7 @@ from platform import python_branch
 
 ## code and answers
 
-```pythin
+```python
 # 1 Literals
 print(5 * 2 - 2)
 # 8
