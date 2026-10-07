@@ -4,8 +4,9 @@
 This assignment covers Python object oriented programing concepts 
 
 ## code and answers 
-
 # 1. Extending Stack Class Behavior
+--- 1. CountingStack Output ---
+100
 ```python
 class Stack:
     def __init__(self):
@@ -43,8 +44,12 @@ print(stk.get_counter())  # Expected output: 100
 print()
 ```
 # 2a. Implementing a Queue Class from Scratch
+--- 2a. Queue Output ---
+1
+dog
+False
+Queue error
 ```python
-
 class QueueError(IndexError):
     pass
 
@@ -80,6 +85,7 @@ class SuperQueue(Queue):
     def isempty(self):
         return len(self._Queue__queue) == 0
 
+
 print("--- 2b. SuperQueue Output ---")
 que = SuperQueue()
 que.put(1)
@@ -93,6 +99,11 @@ for i in range(4):
 print()
 ```
 # 3. Timer Class
+--- 3. Timer Output ---
+23:59:59
+00:00:00
+23:59:59
+
 ```python
 def format_two_digits(val):
     return f"{val:02d}"
@@ -132,6 +143,7 @@ class Timer:
                 if self.__hours < 0:
                     self.__hours = 23
 
+
 print("--- 3. Timer Output ---")
 timer = Timer(23, 59, 59)
 print(timer)
@@ -142,7 +154,15 @@ print(timer)
 print()
 ```
 # 4. Weeker Class
-```python
+--- 4. Weeker Output ---
+Mon
+Tue
+Sun
+Sorry, I can't serve your request.
+
+Process finished with exit code 0
+
+```pyton
 class WeekDayError(Exception):
     pass
 
@@ -176,7 +196,6 @@ try:
     weekday = Weeker('Monday')
 except WeekDayError:
     print("Sorry, I can't serve your request.")
-
 ```
 # Challenges
 1. Messing up indentation and missing colons on my if statements and def lines when typing out the methods.
