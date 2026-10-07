@@ -4,9 +4,10 @@
 This assignment covers Python text parsing concepts 
 
 ## code and answers 
-
-
-## Story
+```python
+import re
+# Story
+story = """
 Once on a time and twice on a time, and all times together as ever I heard tell of, there was a tiny lassie who would weep all day to have the stars in the sky to play with; she wouldn’t have this, and she wouldn’t have that, but it was always the stars she would have. So one fine day off she went to find them. And she walked and she walked and she walked, till by-and-by she came to a mill-dam.
 
 “Goode’en to ye,” says she, “I’m seeking the stars in the sky to play with. Have you seen any?”
@@ -68,7 +69,7 @@ And off he went—Kerplash!—into the water, along the silver path, towards the
 
 And as they came to the foot of it, she saw it was a broad bright road, sloping up and away into the sky, and at the far, far end of it she could see wee shining things dancing about.
 
-“Now,” said the Fish, “here you are, and yon’s the stair; climb up, if you can, but hold on fast. I’ll warrant you find the stair easier at home than by such a way; ‘t was ne’er meant for lassies’ feet to travel;” and off he splashed through the water.
+“Now,” said the Fish, “here you are, and yon’s the stair; climb up, if you can, but hold on fast. I’ll warrant you find the stair easier at home than by such a way; ‘t was ne'er meant for lassies’ feet to travel;” and off he splashed through the water.
 
 So she clomb and she clomb and she clomb, but ne’er a step higher did she get: the light was before her and around her, and the water behind her, and the more she struggled the more she was forced down into the dark and the cold, and the more she clomb the deeper she fell.
 
@@ -77,8 +78,131 @@ But she clomb and she clomb, till she got dizzy in the light and shivered with t
 And bang she came on to the hard boards, and found herself sitting, weeping and wailing, by the bedside at home all alone.
 
 -----
-The story is written by 
+The story is written by 
 Roger Federer &
 Serina Williams
 You can connect with the author at [rfederer@tennis.com] and [swilliams@tennis.com]
 Admin contact number: 1-888-111-2222
+"""
+```
+##  1: Word and character count using lists
+--- Question 1  Answers ---
+Total Character Count: 5512
+Total Word Count: 1091
+
+Histogram (Top 10 most frequent words):
+the        : ************************************************************************************* (85)
+and        : *********************************************************************** (71)
+she        : *************************************************** (51)
+to         : **************************************** (40)
+a          : ******************* (19)
+said       : ***************** (17)
+of         : *************** (15)
+in         : *************** (15)
+at         : *************** (15)
+you        : ************** (14)
+```python
+total_characters = len(story)
+words_list = story.split()
+total_words = len(words_list)
+
+print("--- Question 1  Answers ---")
+print("Total Character Count:", total_characters)
+print("Total Word Count:", total_words)
+
+words_seen = []
+word_counts = []
+
+for word in words_list:
+    clean_word = word.strip(".,;:!?“”'\"[]()-—").lower()
+    if clean_word != "":
+        if clean_word in words_seen:
+            index = words_seen.index(clean_word)
+            word_counts[index] += 1
+        else:
+            words_seen.append(clean_word)
+            word_counts.append(1)
+
+word_pairs = []
+for i in range(len(words_seen)):
+    word_pairs.append((word_counts[i], words_seen[i]))
+
+word_pairs.sort(reverse=True)
+
+print("\nHistogram (Top 10 most frequent words):")
+for count, word in word_pairs[:10]:
+    stars = "*" * count
+    print(f"{word:10s} : {stars} ({count})")
+
+```
+# 2: Word frequency using a dictionary
+--- Question 2 answers ---
+Total Unique Words: 314
+Sample Frequencies:
+the: 85
+and: 71
+she: 51
+```python
+word_dict = {}
+
+for word in words_list:
+    clean_word = word.strip(".,;:!?“”'\"[]()-—").lower()
+    if clean_word != "":
+        if clean_word in word_dict:
+            word_dict[clean_word] += 1
+        else:
+            word_dict[clean_word] = 1
+
+print("\n--- Question 2 answers ---")
+print("Total Unique Words:", len(word_dict))
+print("Sample Frequencies:")
+print("the:", word_dict.get("the"))
+print("and:", word_dict.get("and"))
+print("she:", word_dict.get("she"))
+```
+# 3: Extract phone numbers and emails using simple regular expressions
+--- Question 3 answers ---
+Extracted Phone Numbers: ['1-888-111-2222']
+Extracted Email Addresses: ['rfederer@tennis.com', 'swilliams@tennis.com']
+```python
+extracted_phones = []
+extracted_emails = []
+
+for word in words_list:
+    clean_word = word.strip("[](),;:\"'“”")
+    if clean_word.endswith("."):
+        clean_word = clean_word[:-1]
+
+    if re.search("@", clean_word) and re.search(r"\.", clean_word):
+        if clean_word not in extracted_emails:
+            extracted_emails.append(clean_word)
+
+    if re.search("-", clean_word) and clean_word[0].isdigit():
+        if clean_word not in extracted_phones:
+            extracted_phones.append(clean_word)
+
+print("\n--- Question 3 answers ---")
+print("Extracted Phone Numbers:", extracted_phones)
+print("Extracted Email Addresses:", extracted_emails)
+```
+# 4: Process email usernames
+--- Question 4 results ---
+Usernames: ['rfederer', 'swilliams']
+Hotmail Emails: ['rfederer@hotmail.com', 'swilliams@hotmail.com']
+
+Process finished with exit code 0
+```python
+usernames = []
+hotmail_list = []
+
+for email in extracted_emails:
+    parts = email.split("@")
+    user = parts[0]
+
+    usernames.append(user)
+    hotmail_list.append(f"{user}@hotmail.com")
+
+print("\n--- Question 4 results ---")
+print("Usernames:", usernames)
+print("Hotmail Emails:", hotmail_list)
+
