@@ -30,11 +30,11 @@ Process finished with exit code 1
 ## 1. Which operation causes the exception?
 int()
 ## 2. Why does the exception occur?
-ih enter is pressed nothing is submitted and int() cant read a empty submission
+if enter is pressed nothing is submitted and int() cant read a empty submission
 ## 3. What information does the exception name provide to the programmer?
 python received the wrong type of value
 ## 4. If the user entered 0 instead, would the same exception occur? Explain.
-no like in part one this is a bad input not a bug in the code itself the code works it gives error on next line due to not being able to devide by 0
+no like in part one this is a bad input not a bug in the code itself the code works it gives error on next line due to not being able to divide by 0
 # Part 3 — Complete a Basic try-except
 
 # Part 4 — Trace try-except Control Flow
