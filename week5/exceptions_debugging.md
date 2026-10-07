@@ -10,11 +10,27 @@ This assignment covers Python exceptions and debugging
 ## 1.The program expects an integer but the user enters hello.  
 Bad input, used words instead of numbers .
 ## 2. the programmer writes prin() instead of print().
-
+Bug in code, python doesnt understand "prin()"
 ## 3. The program divides by a value entered by the user, and the user enters 0 .
 Bad input, you cant divide by 0.
 
 # Part 2 — Reading an Exc
+## The user presses Enter without typing a value and Python reports a ValueError.
+```python
+value = int(input("enter a natural number"))
+print(1 / value)  
+```
+enter a natural number
+Traceback (most recent call last):
+  File "C:\Users\ryant\PycharmProjects\WelcomeScreen\pop.py", line 1, in <module>
+    value = int(input("enter a natural number"))
+ValueError: invalid literal for int() with base 10: ''
+
+Process finished with exit code 1
+## 1. Which operation causes the exception?
+## 2. Why does the exception occur?
+## 3. What information does the exception name provide to the programmer?
+## 4. If the user entered 0 instead, would the same exception occur? Explain.
 
 # Part 3 — Complete a Basic try-except
 
