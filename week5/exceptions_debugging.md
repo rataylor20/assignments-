@@ -1,4 +1,4 @@
-# CISC 179 - Week 
+# CISC 179 - Week 5
 ## Exceptions and Debugging 
 
 This assignment covers Python exceptions and debugging 
