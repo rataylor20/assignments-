@@ -1,4 +1,4 @@
-# CISC 179 - Week 4 assignment 4                   
+# CISC 179 - Week 4 assignment 3                  
 ## Functions
 
 This assignment covers Python functions.
