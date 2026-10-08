@@ -85,22 +85,33 @@ You can connect with the author at [rfederer@tennis.com] and [swilliams@tennis.c
 Admin contact number: 1-888-111-2222
 """
 ```
-##  1: Word and character count using lists
---- Question 1  Answers ---
+#  1: Word and character count using lists
+## Results 
 Total Character Count: 5512
 Total Word Count: 1091
 
 Histogram (Top 10 most frequent words):
+
 the        : ************************************************************************************* (85)
+
 and        : *********************************************************************** (71)
+
 she        : *************************************************** (51)
+
 to         : **************************************** (40)
+
 a          : ******************* (19)
+
 said       : ***************** (17)
+
 of         : *************** (15)
+
 in         : *************** (15)
+
 at         : *************** (15)
+
 you        : ************** (14)
+
 ```python
 total_characters = len(story)
 words_list = story.split()
@@ -136,12 +147,17 @@ for count, word in word_pairs[:10]:
 
 ```
 # 2: Word frequency using a dictionary
---- Question 2 answers ---
+## Results
 Total Unique Words: 314
+
 Sample Frequencies:
+
 the: 85
+
 and: 71
+
 she: 51
+
 ```python
 word_dict = {}
 
@@ -161,7 +177,7 @@ print("and:", word_dict.get("and"))
 print("she:", word_dict.get("she"))
 ```
 # 3: Extract phone numbers and emails using simple regular expressions
---- Question 3 answers ---
+## Results
 Extracted Phone Numbers: ['1-888-111-2222']
 Extracted Email Addresses: ['rfederer@tennis.com', 'swilliams@tennis.com']
 ```python
@@ -186,7 +202,7 @@ print("Extracted Phone Numbers:", extracted_phones)
 print("Extracted Email Addresses:", extracted_emails)
 ```
 # 4: Process email usernames
---- Question 4 results ---
+## Results
 Usernames: ['rfederer', 'swilliams']
 Hotmail Emails: ['rfederer@hotmail.com', 'swilliams@hotmail.com']
 
