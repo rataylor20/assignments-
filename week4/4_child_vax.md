@@ -48,3 +48,5 @@ Process finished with exit code 0
 
 3. Remembering to use the global keyword so the counter would actually update outside of the function took some trial and error.
    
+# Video link 
+https://drive.google.com/file/d/1YKKMmDTdfdygPGMvxi-QdMXjBI-vZM_5/view?usp=sharing
