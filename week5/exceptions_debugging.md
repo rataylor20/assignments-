@@ -161,12 +161,152 @@ Exc: TypeError
 Exp: Python won't let you mix and add string text ("2") directly with a regular number (2).
 
 # Part 7 — The Default except Branch 
+```python
+try:
+    # risky code
+except ValueError:
+    print("Invalid value")
+except ZeroDivisionError:
+    print("Division by zero")
+except:
+    print("Some other exception occurred")
+```
+## What is the purpose of the final except branch?
+It's just a backup to catch any other errors that ValueError or ZeroDivisionError miss.
+## When would it execute?
+It runs if an error happens that isn't a ValueError or ZeroDivisionError (like a TypeError or IndexError).
+## Why must the default except branch appear last?
+Python checks except blocks from top to bottom. If the default one was first, it would grab every error right away and Python would never reach the specific ones underneath.
+## Why are specific exception handlers usually more informative than relying only on a default handler?
+Specific handlers tell you what actually broke so you can show a helpful error message. A default handler hides the real problem, which makes it annoying to debug.
 # Part 8 — Syntax Errors Are Different
+```python
+if value > 0
+    print("Positive")
+```
+## What kind of error is present?
+SyntaxError
+## Locate the defect.
+Missing a colon : at the end of if value > 0.
+## Why should the programmer correct this problem rather than attempt to hide it with ordinary exception-handling logic?
+Because Python can't even run or load the code if there's a syntax error, so a try-except block won't catch it. You just have to fix the code directly.
+
 # Part 9 — Test Every Execution Path
-## number = float(input("Enter a number: "))
+```python
+number = float(input("Enter a number: "))
+
+if number > 0:
+    print("Positive")
+elif number < 0:
+    print("Negative")
+else:
+    print("Zero")
+```
+| Test Input | Expected Path | Expected Result | Actual Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| 5 | if number > 0: | Positive | Positive | Pass |
+| -3 | elif number < 0: | Negative | Negative | Pass |
+| 0 | else: | Zero | Zero | Pass |
+## Explain why one successful test does not demonstrate that every path works correctly.
+Testing just one input only checks that single branch. The other branches could still have typos or bad logic that you won't see unless you test inputs for them too.
+
 # Part 10 — Find the Hidden Bug
-## value = float(input("Enter a number: "))
+```python
+value = float(input("Enter a number: "))
+
+if value > 0:
+    print("Positive")
+elif value < 0:
+    prin("Negative")
+else:
+    print("Zero")
+```
+## Does the program appear to work for that test (0)?
+Yeah, entering 0 goes straight to the else: path, so it prints Zero without throwing an error.
+## Which execution path contains the bug?
+The elif value < 0: path.
+## What test input will expose it?
+Any negative number, like -5.
+## What does this demonstrate about testing different execution paths?
+It shows code can look totally fine on one test input, but still have game-breaking bugs sitting in paths you didn't run.
+```python
+value = float(input("Enter a number: "))
+
+if value > 0:
+    print("Positive")
+elif value < 0:
+    print("Negative")
+else:
+    print("Zero")
+```
 # Part 11 — Print Debugging
+## Before changing the code, calculate the expected result manually:
+## 50.0
+## Run the program and record the actual result:
+## 16.5
+## Code with temporary print() statements:
 ## The following program is intended to calculate the total cost of several identical items, but it contains a logical error.
+```python
+def calculate_total(price, quantity):
+    print("DEBUG: price =", price, "quantity =", quantity)
+    total = price + quantity
+    print("DEBUG: total =", total)
+    return total
+
+price = float(input("Price: "))
+quantity = int(input("Quantity: "))
+
+result = calculate_total(price, quantity)
+print("Total:", result)
+```
+## For each debugging statement, explain what information it provides:
+The first print shows that 12.5 and 4 got passed into the function correctly.
+The second print shows that total came out to 16.5, showing that the program added the numbers instead of multiplying them.
+Identify and correct the logical error:
+The error was using + instead of * in total = price + quantity. It should be total = price * quantity.
+```python
+def calculate_total(price, quantity):
+    total = price * quantity
+    return total
+
+price = float(input("Price: "))
+quantity = int(input("Quantity: "))
+
+result = calculate_total(price, quantity)
+print("Total:", re
+```
 # Part 12 — Integrated Exception-Handling Program
 ## Create a Python program that asks the user for two integers and divides the first number by the second.
+```python
+try:
+    num1 = int(input("Enter first integer: "))
+    num2 = int(input("Enter second integer: "))
+    result = num1 / num2
+    print("Result:", result)
+except ValueError:
+    print("Error: You have to enter valid whole numbers.")
+except ZeroDivisionError:
+    print("Error: You can't divide by zero.")
+
+print("Done running.")
+```
+Input 1 | Input 2 | Expected Path | Expected Result | Actual Result | Pass/Fail |
+| --- | --- | --- | --- | --- | --- |
+| 10 | 2 | try block | Result: 5.0 | Result: 5.0 | Pass |
+| 10 | 0 | except ZeroDivisionError: | Error message | Error message | Pass |
+| abc | 5 | except ValueError: | Error message | Error message | Pass |
+| 10 | xyz | except ValueError: | Error message | Error message | Pass |
+
+# Analysis and Reflection
+## 1. What does it mean for an exception to be raised?
+It means Python hit something wrong while running the code, so it stopped normal execution to throw an error flag.
+## 2. What happens to the remaining statements in a try block after an exception occurs?
+Python completely skips the rest of the code in the try block and jumps straight down to the matching except block.
+## 3. Why can separate exception handlers be more useful than one generic handler?
+Because specific handlers tell the user exactly what went wrong (like dividing by zero vs typing letters instead of numbers) instead of giving a useless generic error.
+## 4.Why does handling an exception not prove that a program is bug-free?
+Because catching exceptions just keeps the program from crashing on bad input. It won't catch bad math, wrong logic, or typos in paths that run without throwing errors.
+## 5. Why should every important execution path be tested?
+Because a path you didn't test could easily have a hidden typo or logic bug that only triggers when a specific input runs through it.
+## 6. How can print debugging help locate a logical error?
+It lets you track what your variables are doing at each step so you can spot the exact line where the math or logic goes off track.
