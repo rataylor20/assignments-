@@ -1,6 +1,6 @@
-# CISC 179 - Week 7
-## Applying OOP
+# CISC 179 - Week 3
+## Applying decisions statements
 
-This assignment covers Python object oriented programing concepts 
+This assignment covers Python decisions statements
 
 ## code and answers 
