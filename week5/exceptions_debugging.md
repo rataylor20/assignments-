@@ -119,8 +119,11 @@ except ZeroDivisionError:
 
 ## outcomes
 (5): Prints The reciprocal is: 0.2
+
 (0): Catches the zero error and prints You can't calculate the reciprocal of zero!
+
 (abc): Catches the value error and prints That's not a valid whole number!
+
 (): Catches the value error and prints That's not a valid whole number!
 
 
