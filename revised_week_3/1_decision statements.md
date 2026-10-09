@@ -346,24 +346,24 @@ elif x == y:
     print("three")
 else:
     print("four")
-    ```
+```
 one,two
 Please execute the code provided above in Python to confirm your result.
 one
 two
 
 Process finished with exit code 0
-Challenges
+# Challenges
 Please describe the challenges you faced during the exercise.
-# Figuring out how to write three separate if statements for the largest of three numbers without them interfering with each other.
+## Figuring out how to write three separate if statements for the largest of three numbers without them interfering with each other.
 
-# Keeping the upper and lower bounds straight in the grading scale chain so numbers wouldn't fall through the cracks.
+## Keeping the upper and lower bounds straight in the grading scale chain so numbers wouldn't fall through the cracks.
 
-# _________________________________________________________________________________________________
+## _________________________________________________________________________________________________
 
-# _________________________________________________________________________________________________
+## _________________________________________________________________________________________________
 
-# _________________________________________________________________________________________________
+## _________________________________________________________________________________________________
 
-# _________________________________________________________________________________________________
-End of exercise
+## _________________________________________________________________________________________________
+# End of exercise
