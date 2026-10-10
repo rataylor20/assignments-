@@ -34,6 +34,7 @@ print(f"steps = {steps}")
 ```
 ## prompt:
 Enter a non negative, non zero integer: 16
+
 8
 
 4
